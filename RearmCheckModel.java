@@ -206,41 +206,7 @@ public class RearmCheckModel implements ViewListener {
 		
 		return false;
 	}
-	
-	/**
-		Send the generated data to the view - DEPRICATED
 
-	private void sendData() {
-		int finalCount = 0;
-		System.out.print("\n\n\n");
-		System.out.println("Results");
-		System.out.println("---------------------------------------------");
-		
-		System.out.println("\tWeapons Found");
-		for (String key: counts.keySet()) {
-			if (!isRestricted(key)) {
-				System.out.println("\t\t" + key + ": " + counts.get(key));
-			}
-			else {
-				//Restricted keys are still in the counts file, I only care if someone actually
-				//tried placing that item
-				if (counts.get(key) > 0) {
-					restrictedCount++;
-				}
-			}
-			//Regardless of its restricted status it is still a valid entity
-			finalCount++;
-		}
-		
-		finalCount += unknownCount;
-		
-		System.out.println("\tStats");
-		System.out.println("\t\tUnknown entites found: " + unknownCount);
-		System.out.println("\t\tTotal Entity Count: " + finalCount);
-		System.out.println("\t\tRestricted Entities Found: " + restrictedCount);
-		System.out.println("\t\tMap will replace spawns: " + counts.get("ttt_playerspawn") + " spawns found");
-	}
-	*/
 	
 	/**
 		Clear all the stored data so old data wont be given by accident.
