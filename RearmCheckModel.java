@@ -19,7 +19,7 @@ public class RearmCheckModel implements ViewListener {
 		weapon_gh_checker, weapon_jihadbomb, weapon_ttt_ak47, weapon_ttt_aug, weapon_ttt_awp,
 		weapon_ttt_awperhand, weapon_ttt_beacon, weapon_ttt_binoculars, weapon_ttt_blackhole,
 		weapon_ttt_c4, weapon_ttt_chickennade, weapon_ttt_confgrenade, weapon_ttt_cse, weapon_ttt_decoy,
-		weapon_ttt_defuser, weapon_ttt_det_pistol, weapon_ttt_dual_elits, weapon_ttt_famas, 
+		weapon_ttt_defuser, weapon_ttt_det_pistol, weapon_ttt_dual_elites, weapon_ttt_famas, 
 		weapon_ttt_flaregun, weapon_ttt_freezegrenade, weapon_ttt_galil, weapon_ttt_glock,
 		weapon_ttt_health_station, weapon_ttt_healthkit, weapon_ttt_knife, weapon_ttt_m4a1,
 		weapon_ttt_m16, weapon_ttt_magnum, weapon_ttt_mp5, weapon_ttt_p90, weapon_ttt_p228,
@@ -194,10 +194,117 @@ public class RearmCheckModel implements ViewListener {
 	}
 	
 	/**
+		Get the name of the entity
+		Note: Its assumed these names are to be used in a list, so proper grammer is added, (example Rifle -> Rifles)
+		@param name The entity name (example: weapon_ttt_sg552)
+		@returns The name that people are used to for the entity (example: SG552)
+	*/
+	public String getName(String name) {
+			
+			switch(name) {
+				case "item_box_buckshot_ttt": 
+					return "Shotgun Ammo";
+				
+				case "item_ammo_revolver_ttt":
+					return "Deagle Ammo";
+					
+				case "item_ammo_pistol_ttt":
+					return "Pistol Ammo";
+				
+				case "item_ammo_357_ttt": 
+					return "Rifle Ammo";
+					
+				case "ttt_random_ammo":
+					return "Random Ammo";
+				
+				case "ttt_playerspawn": 
+					return "Player Spawns";
+					
+				case "item_ammo_smg1_ttt": 
+					return "SMG Ammo";
+				
+				case "weapon_ttt_confgrenade":
+					return "Discombobulators";
+				
+				case "weapon_ttt_smokegrenade":
+					return "Smoke Grenades"; 
+				
+				case "weapon_zm_molotov":
+					return "Incendiary Grenades";
+					
+				case "weapon_zm_shotgun": 
+					return "Shotguns";
+					
+				case "weapon_ttt_smg": 
+					return "SMG's";
+					
+				case "weapon_ttt_galil": 
+					return "Galils";
+					
+				case "weapon_ttt_mp5": 
+					return "MP5's";
+					
+				case "weapon_zm_revolver": 
+					return "Deagle's";
+					
+				case "weapon_zm_rifle":
+					return "Rifles";
+				
+				case "weapon_ttt_sg552":
+					return "SG552's";
+					
+				case "ttt_random_weapon": 
+					return "Random Weapons";
+				
+				case "weapon_ttt_famas": 
+					return "Famas";
+					
+				case "weapon_ttt_p228": 
+					return "P228's";
+					
+				case "weapon_zm_pistol": 
+					return "Pistols";
+					
+				case "weapon_ttt_m16":
+					return "M16's";
+					
+				case "weapon_ttt_pump_shotgun": 
+					return "Pump Shotguns";
+					
+				case "weapon_ttt_glock": 
+					return "Glocks";
+				
+				case "weapon_ttt_dual_elites":
+					return "Dual elites";
+					
+				case "weapon_zm_sledge": 
+					return "HUGE's";
+				
+				case "weapon_ttt_aug":
+					return "AUG's";
+					
+				case "weapon_ttt_p90": 
+					return "P90's";
+				
+				case "weapon_ttt_magnum": 
+					return "Magnums";
+					
+				case "weapon_zm_mac10": 
+					return "MAC10's";
+				
+
+				//Don't know this one, just return the name
+				default:
+					return name;
+			}
+		
+	}
+	
+	/**
 		Check if the entity is restricted
 		@param entity, the entity to check
 	*/
-	private boolean isRestricted(String entity) {
+	public boolean isRestricted(String entity) {
 		for (Restricted r: Restricted.values()) {
 			if (r.name().equals(entity)) {
 				return true;
@@ -230,6 +337,22 @@ public class RearmCheckModel implements ViewListener {
 		validEntCount = 0;
 		
 	
+	}
+	
+	/**
+		Get the counts of all entities
+		@return An arraylist with the entity name as the key and its count as the value
+	*/
+	public HashMap<String, Integer> getCounts() {
+		return counts;
+	}
+	
+	/**
+		Get the count of unknown entities
+		@return The count of unknown entities
+	*/
+	public int getUnknownCount() {
+		return unknownCount;
 	}
 		
 	

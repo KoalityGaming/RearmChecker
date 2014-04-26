@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public interface ViewListener {
 	
 	/**
@@ -36,6 +38,31 @@ public interface ViewListener {
 		@param view The view to use
 	*/
 	public void setView(ModelListener view);
+	
+	/**
+		Get the counts of all entities
+		@return A HashMap with the entity name as the key and its count as the value
+	*/
+	public HashMap<String, Integer> getCounts();
+	
+	/**
+		Get the count of unknown entities
+		@return The count of unknown entities
+	*/
+	public int getUnknownCount();
+	
+	/**
+		Check if the entity is restricted
+		@param entity, the entity to check
+	*/
+	public boolean isRestricted(String entity);
+	
+	/**
+		Get the name of the entity
+		@param name The entity name (example: weapon_ttt_sg552)
+		@returns The name that people are used to for the entity (example: SG552)
+	*/
+	public String getName(String name);
 
 
 }
